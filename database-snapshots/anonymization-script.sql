@@ -60,11 +60,7 @@ WHERE
 UPDATE
    person
 SET
-   gender =
-   case
-   when gender = 'F' then 'M'
-   when gender = 'M' then 'F'
-   end;
+   gender = 'F';
 --
 -- Clear out login info
 --
@@ -114,15 +110,15 @@ WHERE
 UPDATE
    person_address
 SET
-   address1 = concat('anon-address1-', person_id),
-   address2 = concat('anon-address2-', person_id),
-   address3 = concat('anon-address3-', person_id),
-   address4 = concat('anon-address4-', person_id),
-   address5 = concat('anon-address5-', person_id),
-   address6 = concat('anon-address6-', person_id),
-   county_district = concat('anon-countyDistrict', person_id),
-   city_village = concat('anon-cityVillage', person_id),
-   country = concat('anon-country', person_id),
+   address1 = concat('anonAddress1'),
+   address2 = concat('anonAddress2'),
+   address3 = concat('anonAddress3'),
+   address4 = concat('anonAddress4'),
+   address5 = concat('anonAddress5'),
+   address6 = concat('anonAddress6'),
+   county_district = concat('anonCountyDistrict'),
+   city_village = concat('anonCityVillage'),
+   country = concat('anonCountry'),
    state_province = null,
    postal_code = null,
    latitude = null,
@@ -201,7 +197,7 @@ UPDATE
      AND pat.name LIKE '%Camp location%'
      AND pat.format = 'java.lang.String'
 SET
-  pa.value = concat('anon-', char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97) );
+  pa.value = concat('anonCampLocation');
 
 /* for all person attribute WHERE Mazhi is getting captured */
 
@@ -213,7 +209,7 @@ SET
        AND pat.name LIKE '%Mazhi%'
        AND pat.format = 'java.lang.String'
   SET
-    pa.value = concat('anon-', char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97) );
+    pa.value = concat('anonMazhi');
 
 /* for all person attribute WHERE Status of Patient is getting captured */
 
@@ -225,11 +221,7 @@ SET
        AND pat.name LIKE '%Status of Patient%'
        AND pat.format = 'org.openmrs.Concept'
   SET
-    pa.value =
-    case
-    when pa.value = 201 then 200
-    when pa.value = 200 then 201
-    end;
+    pa.value = 200;
 
 /* for all person attribute WHERE Patient phone number is getting captured */
 
@@ -252,7 +244,7 @@ SET
        AND pat.name LIKE '%Previous MSF ID%'
        AND pat.format = 'java.lang.String'
   SET
-      pa.value = concat('anon-', FLOOR(RAND() * 100000000));
+      pa.value = concat('anonPreviousMSFID', FLOOR(RAND() * 100000000));
   /* for all person attribute WHERE Full name is getting captured */
 
     UPDATE
@@ -263,7 +255,7 @@ SET
          AND pat.name LIKE '%Full name%'
          AND pat.format = 'java.lang.String'
     SET
-      pa.value = concat('anon-', char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97) );
+      pa.value = concat('anonFullName');
 
   /* for all person attribute WHERE Relationship with the patient is getting captured */
 
@@ -275,7 +267,7 @@ SET
          AND pat.name LIKE '%Relationship with the patient%'
          AND pat.format = 'java.lang.String'
     SET
-      pa.value = concat('anon-', char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97) );
+      pa.value = concat('anonRelationshipWithPatient');
 
   /* for all person attribute WHERE Phone number is getting captured */
 
@@ -299,7 +291,7 @@ SET
          AND pat.name LIKE '%Address%'
          AND pat.format = 'java.lang.String'
     SET
-      pa.value = concat('anon-', char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97) );
+      pa.value = concat('anonAddress');
 
   /* for all person attribute WHERE Block number is getting captured */
 
@@ -311,7 +303,7 @@ SET
          AND pat.name LIKE '%Block number%'
          AND pat.format = 'java.lang.String'
     SET
-      pa.value = concat('anon-', FLOOR(RAND() * 100000000));
+      pa.value = concat('anonBlockNumber', FLOOR(RAND() * 100000000));
 
 /*  Appointment scheduling Notes */
 UPDATE
