@@ -8,14 +8,17 @@ TRUNCATE TABLE hl7_in_error;
 TRUNCATE TABLE hl7_in_queue;
 TRUNCATE TABLE notification_alert_recipient;
 TRUNCATE TABLE notification_alert;
+TRUNCATE TABLE given_log;
+TRUNCATE TABLE patient_appointment_audit;
 SET
    FOREIGN_KEY_CHECKS = 1;
 -- randomize the person names (given_name and family_name to contain random 8 alpha-numeric characters)
 UPDATE
    person_name
 SET
-   given_name = concat( 'AnonFN', char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97) ),
-   family_name = concat( 'AnonLN', char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97) );
+   given_name = concat( 'AnnonFN-', char(round(rand()* 25) + 65), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97) ), 
+   middle_name = concat( 'AnnonMN-', char(round(rand()* 25) + 65), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97) ), 
+   family_name = concat( 'AnnonLN-', char(round(rand()* 25) + 65), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97), char(round(rand()* 25) + 97) )
 
 -- randomize +/- 6 months for persons older than ~15 yrs old
 UPDATE
